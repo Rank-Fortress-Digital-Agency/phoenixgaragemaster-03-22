@@ -1,326 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <style>
-        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+      /* Global Styles */
 
-/* Global Styles */
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-* {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      body {
+        padding: 40px 10%;
+        background: #f5f5f5;
+      }
 
-body {
-  padding: 40px 10%;
-  background: #f5f5f5;
-}
+      a {
+        text-decoration: none;
+      }
 
-a{
-  text-decoration: none;
-}
+      /* Container Styles */
+      .container {
+        display: flex;
+      }
+      .main-wrapper {
+        flex: 2;
+      }
+      .side-bar {
+        background: #faf9f9;
+        flex: 1;
+        padding: 40px;
+        /* background-color: white; */
+      }
 
-/* Container Styles */
-.container {
-  display: flex;
-}
-.main-wrapper{
-  flex: 2;
-}
-.side-bar{
-  background: #faf9f9;
-  flex: 1;
-  padding: 40px;
-  /* background-color: white; */
-}
+      .side-bar ul {
+        padding: 0 40px;
+        list-style: none;
+      }
 
-.side-bar ul{
-  padding: 0 40px;
-  list-style: none;
-}
+      .side-bar {
+        background: rgb(230, 230, 231);
+      }
 
-.side-bar{
-  background: rgb(230, 230, 231);
-}
+      @media only screen and (max-width: 900px) {
+        .container {
+          flex-direction: column;
+        }
+        .side-bar {
+          background: #113e77;
+          color: white !important;
+        }
+        .side-bar a {
+          color: white !important;
+        }
+      }
 
+      /* Navigation Menu Styles */
 
-@media only screen and (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
-  .side-bar{
-    background: #113e77;
-    color: white !important;
-  }
-  .side-bar a{
-    color: white !important;
-  }
-}
+      nav.nav-menu {
+        width: 100%;
+        background-color: #113e77;
+        padding: 10px;
+      }
 
+      nav.nav-menu ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        font-size: clamp(0.8rem, 1.2vw, 2rem);
+      }
 
+      .nav-menu .nav-item {
+        padding: 15px;
+        transition: background-color 500ms ease-in-out;
+      }
 
-/* Navigation Menu Styles */
+      .nav-menu .nav-item:hover {
+        cursor: pointer;
+        background-color: #f5f5f54d;
+      }
 
-nav.nav-menu {
-  width: 100%;
-  background-color: #113e77;
-  padding: 10px;
-}
+      .nav-menu .nav-item a {
+        text-decoration: none;
+        color: white;
+      }
 
-nav.nav-menu ul {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  list-style: none;
-  font-size: clamp(.8rem, 1.2vw, 2rem); 
-}
+      /* Main Content Wrapper Styles */
+      .main-wrapper {
+        background: white;
+        padding: 40px;
+      }
 
-.nav-menu .nav-item {
-  padding: 15px;
-  transition: background-color 500ms ease-in-out;
-}
+      section {
+        margin-bottom: 60px;
+      }
 
-.nav-menu .nav-item:hover {
-  cursor: pointer;
-  background-color: #f5f5f54d;
-}
+      section.head,
+      section.youtube-embed {
+        text-align: center;
+      }
 
-.nav-menu .nav-item a{
-  text-decoration: none;
-  color: white;
-}
+      .button-link {
+        display: block;
+        margin: 20px 0 0 0;
+        padding: 10px 40px;
+        width: fit-content;
+        background: #efc51f;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        transition: 0.3s transform ease-in-out;
+      }
 
+      .button-link:hover {
+        transform: scale(1.05);
+      }
 
-/* Main Content Wrapper Styles */
-.main-wrapper {
-  background: white;
-  padding: 40px;
-}
+      h1 {
+        font-size: 34px;
+      }
 
-section {
-  margin-bottom: 60px;
-}
+      h2 {
+        margin-bottom: 20px;
+      }
 
-section.head,
-section.youtube-embed {
-  text-align: center;
-}
+      p {
+        text-align: justify;
+        margin-bottom: 10px;
+        line-height: 1.5rem;
+      }
 
-.button-link {
-  display: block;
-  margin: 20px 0 0 0;
-  padding: 10px 40px;
-  width: fit-content;
-  background: #efc51f;
-  border-radius: 5px;
-  text-decoration: none;
-  color: black;
-  transition: 0.3s transform ease-in-out;
-}
+      img {
+        max-width: 100%;
+      }
 
-.button-link:hover {
-  transform: scale(1.05);
-}
+      .two-col {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
 
-h1 {
-  font-size: 34px;
-}
+      .two-col div {
+        width: 50%;
+      }
 
-h2 {
-  margin-bottom: 20px;
-}
+      @media only screen and (max-width: 900px) {
+        body {
+          padding: 0;
+        }
 
-p {
-  text-align: justify;
-  margin-bottom: 10px;
-  line-height: 1.5rem;
-}
+        .two-col {
+          flex-direction: column;
+        }
 
-img {
-  max-width: 100%;
-}
+        .two-col div {
+          width: 100%;
+        }
 
-.two-col {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-}
+        .main-wrapper {
+          padding: 5%;
+        }
+      }
+    </style>
+    <title>
+      Why Phoenix Garage Master Is The Best Company For The Job? | Phoenix
+      Garage Master
+    </title>
+  </head>
 
-.two-col div {
-  width: 50%;
-}
+  <body>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+      <ul>
+        <li class="nav-item">
+          <a href="https://www.phoenixgaragemaster.com/">Main</a>
+        </li>
+        <li class="nav-item">
+          <a href="https://goo.gl/maps/quVy9YKwgQW4vCM88">Maps</a>
+        </li>
+        <li class="nav-item"><a href="./media.html">Media</a></li>
+        <li class="nav-item">
+          <a
+            href="https://sites.google.com/view/garage-door-repair-scottsdale/Garage-Door-Repair-Scottsdale"
+            >Phoenix Garage Master</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-@media only screen and (max-width: 900px) {
-  body {
-    padding: 0;
-  }
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Main Content Wrapper -->
+      <div class="main-wrapper">
+        <section class="head">
+          <h1>Why Phoenix Garage Master Is The Best Company For The Job?</h1>
+        </section>
 
-  .two-col {
-    flex-direction: column;
-  }
-
-  .two-col div {
-    width: 100%;
-  }
-
-  .main-wrapper {
-    padding: 5%;
-  }
-}
-   </style>
-  <title>Why Phoenix Garage Master Is The Best Company For The Job? | Phoenix Garage Master</title>
-</head>
-
-<body>
-  <!-- Navigation Menu -->
-  <nav class="nav-menu">
-    <ul>
-      <li class="nav-item"><a href="https://www.phoenixgaragemaster.com/">Main</a></li>
-      <li class="nav-item"><a href="https://goo.gl/maps/quVy9YKwgQW4vCM88">Maps</a></li>
-      <li class="nav-item"><a href="./media.html">Media</a></li>
-      <li class="nav-item"><a
-          href="https://sites.google.com/view/garage-door-repair-scottsdale/Garage-Door-Repair-Scottsdale">Phoenix Garage Master</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content Container -->
-  <div class="container">
-
-    <!-- Main Content Wrapper -->
-    <div class="main-wrapper">
-      <section class="head">
-        <h1>Why Phoenix Garage Master Is The Best Company For The Job?</h1>
-      </section>
-
-      <section>
+        <section>
           <youtube-embed>
-            <iframe width="100%" height="500" src="https://www.youtube.com/embed/RHnnyvFUz5c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe
+              width="100%"
+              height="500"
+              src="https://www.youtube.com/embed/RHnnyvFUz5c"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </youtube-embed>
-          <a class="button-link"
-                href="https://www.phoenixgaragemaster.com/why-phoenix-garage-master-is-the-best-company-for-the-job/">Read Post</a>
-      </section>
+          <a
+            class="button-link"
+            href="https://www.phoenixgaragemaster.com/why-phoenix-garage-master-is-the-best-company-for-the-job/"
+            >Read Post</a
+          >
+        </section>
 
-      <section>
-          <p><a href="https://www.phoenixgaragemaster.com/garage-door-repair-scottsdale-az/">Garage door repair</a> is a serious business that should only entrust the experts. At Phoenix Garage Master, we have the experience and knowledge necessary to handle any repair job, big or small. We understand the importance of keeping your garage door functioning, and we pledge always to provide our clients with quality service. Garage Master is a professional garage door repair company that provides Scottsdale and the surrounding areas. We have over years of experience in the garage door repair industry, and we are dedicated to providing our customers with quality service and repairs.</p>
-          <p>Phoenix Garage Master is a professional garage door repair company that provides services to Scottsdale and the surrounding areas. We have a team of experts who can provide repairs for all garage doors, whether manual or automatic. Phoenix Garage Master is a family-owned and operated business specializing in garage door repair and installation. We have been serving the Scottsdale area for over the years, and we are dedicated to providing our customers with quality service at an affordable price.</p>
-          <p>Garage door repair is a common task that many homeowners face. Whether you are experiencing trouble with the opener or the door itself, it is essential to seek professional help as soon as possible. Phoenix Garage Master is a trusted garage door repair company in Scottsdale that can help you get your door back up and running in no time.</p>
-      </section>
-      
-      <section>
-          <div style="display:flex; justify-content:center">
-              <img src="https://lh3.googleusercontent.com/geougc/AF1QipMRNKNSNbYZoxM5CpDVSUjtMLkqjjRsmKwu8ENq=h400-no" alt="Garage Door Repair Scottsdale, AZ">
+        <section>
+          <p>
+            <a
+              href="https://www.phoenixgaragemaster.com/garage-door-repair-scottsdale-az/"
+              >Garage door repair</a
+            >
+            is a serious business that should only entrust the experts. At
+            Phoenix Garage Master, we have the experience and knowledge
+            necessary to handle any repair job, big or small. We understand the
+            importance of keeping your garage door functioning, and we pledge
+            always to provide our clients with quality service. Garage Master is
+            a professional garage door repair company that provides Scottsdale
+            and the surrounding areas. We have over years of experience in the
+            garage door repair industry, and we are dedicated to providing our
+            customers with quality service and repairs.
+          </p>
+          <p>
+            Phoenix Garage Master is a professional garage door repair company
+            that provides services to Scottsdale and the surrounding areas. We
+            have a team of experts who can provide repairs for all garage doors,
+            whether manual or automatic. Phoenix Garage Master is a family-owned
+            and operated business specializing in garage door repair and
+            installation. We have been serving the Scottsdale area for over the
+            years, and we are dedicated to providing our customers with quality
+            service at an affordable price.
+          </p>
+          <p>
+            Garage door repair is a common task that many homeowners face.
+            Whether you are experiencing trouble with the opener or the door
+            itself, it is essential to seek professional help as soon as
+            possible. Phoenix Garage Master is a trusted garage door repair
+            company in Scottsdale that can help you get your door back up and
+            running in no time.
+          </p>
+        </section>
+
+        <section>
+          <div style="display: flex; justify-content: center">
+            <img
+              src="https://lh3.googleusercontent.com/geougc/AF1QipMRNKNSNbYZoxM5CpDVSUjtMLkqjjRsmKwu8ENq=h400-no"
+              alt="Garage Door Repair Scottsdale, AZ"
+            />
           </div>
-          <br>
-          <h2 style="text-align:center">We're The Experts For Garage Door Repair In Scottsdale.</h2>
-          <hr>
-          <br>
-          <p>We know all about fixing and repairing garage doors, so you can rest assured that we’ll be able to get your door working like new in no time. We pride ourselves on professionalism and customer satisfaction, so you can be sure that you’re in good hands with us. If you require garage door repair, don’t hesitate to contact us. The contactor is a task that one should only entrust to a professional. Garage doors are heavy and can be dangerous if not handled properly. If you’re not confident in your ability to fix the door yourself, it’s best to call a professional. Phoenix Garage Master is a reputable garage door repair company that can help you get your door up and running in no time. We offer a wide range of services, from fixing broken springs to installing new doors. We’re here to help you get the most out of your garage door.</p>
-          <p>It’s not always easy to know who to call for garage door repair in Scottsdale. Phoenix Garage Master has the experience and expertise you need to get the job done right the first time. We offer a full range of services, from repairing broken springs to replacing entire garage doors. We’re here to help you get your garage back in working order so that you can get on with your life.</p>
-          <p>Phoenix Garage Master is the leading garage door repair company in Scottsdale. We offer a wide range of services, from fixing a broken spring to replacing an entire garage door. Our technicians are experienced and knowledgeable, and they will work diligently to get your garage door up and running again.</p>
-          <a class="button-link"
-                href="https://www.phoenixgaragemaster.com/">Visit Us</a>
-      </section>
+          <br />
+          <h2 style="text-align: center">
+            We're The Experts For Garage Door Repair In Scottsdale.
+          </h2>
+          <hr />
+          <br />
+          <p>
+            We know all about fixing and repairing garage doors, so you can rest
+            assured that we’ll be able to get your door working like new in no
+            time. We pride ourselves on professionalism and customer
+            satisfaction, so you can be sure that you’re in good hands with us.
+            If you require garage door repair, don’t hesitate to contact us. The
+            contactor is a task that one should only entrust to a professional.
+            Garage doors are heavy and can be dangerous if not handled properly.
+            If you’re not confident in your ability to fix the door yourself,
+            it’s best to call a professional. Phoenix Garage Master is a
+            reputable garage door repair company that can help you get your door
+            up and running in no time. We offer a wide range of services, from
+            fixing broken springs to installing new doors. We’re here to help
+            you get the most out of your garage door.
+          </p>
+          <p>
+            It’s not always easy to know who to call for garage door repair in
+            Scottsdale. Phoenix Garage Master has the experience and expertise
+            you need to get the job done right the first time. We offer a full
+            range of services, from repairing broken springs to replacing entire
+            garage doors. We’re here to help you get your garage back in working
+            order so that you can get on with your life.
+          </p>
+          <p>
+            Phoenix Garage Master is the leading garage door repair company in
+            Scottsdale. We offer a wide range of services, from fixing a broken
+            spring to replacing an entire garage door. Our technicians are
+            experienced and knowledgeable, and they will work diligently to get
+            your garage door up and running again.
+          </p>
+          <a class="button-link" href="https://www.phoenixgaragemaster.com/"
+            >Visit Us</a
+          >
+        </section>
 
-      <section>
+        <section>
           <h2>Quality Service, Affordable Price.</h2>
-          <p>Phoenix Garage Master is the company you can count on for all your garage door needs. We provide repair and installation services for both residential and commercial properties. Our technicians are highly experienced and can help you with any issue you might be having with your garage door. We offer competitive prices, so you can be sure that you’re getting the best value for your money.</p>
-          <p>We understand that not everyone is familiar with how garage doors work, so we offer free consultations to our customers. We want to make sure that you’re delighted with our work for you. We also offer a one-year warranty on all of our services, so you can be sure that your garage door is in good hands.</p>
-          <p>If you require garage door repair, our experts are here to help. We have a wide range of services that we offer to cater to your specific needs. We also have a team of experienced technicians who know how to properly fix any issue that may arise with your garage door.</p>
-          <p>Phoenix Garage Master is the best company for garage door repair in Scottsdale. We have years of experience repairing all types of garage doors, and we’re always here to help you get your garage door back up and running. Whether you’re dealing with a broken spring or a faulty opener, our team can get your garage door repaired quickly and efficiently. We also offer many other garage door services, including installation, maintenance, and customization.</p>
-      </section>
+          <p>
+            Phoenix Garage Master is the company you can count on for all your
+            garage door needs. We provide repair and installation services for
+            both residential and commercial properties. Our technicians are
+            highly experienced and can help you with any issue you might be
+            having with your garage door. We offer competitive prices, so you
+            can be sure that you’re getting the best value for your money.
+          </p>
+          <p>
+            We understand that not everyone is familiar with how garage doors
+            work, so we offer free consultations to our customers. We want to
+            make sure that you’re delighted with our work for you. We also offer
+            a one-year warranty on all of our services, so you can be sure that
+            your garage door is in good hands.
+          </p>
+          <p>
+            If you require garage door repair, our experts are here to help. We
+            have a wide range of services that we offer to cater to your
+            specific needs. We also have a team of experienced technicians who
+            know how to properly fix any issue that may arise with your garage
+            door.
+          </p>
+          <p>
+            Phoenix Garage Master is the best company for garage door repair in
+            Scottsdale. We have years of experience repairing all types of
+            garage doors, and we’re always here to help you get your garage door
+            back up and running. Whether you’re dealing with a broken spring or
+            a faulty opener, our team can get your garage door repaired quickly
+            and efficiently. We also offer many other garage door services,
+            including installation, maintenance, and customization.
+          </p>
+        </section>
 
-      <section>
+        <section>
           <div class="two-col">
-              <div style="display:flex; flex-direction: column; justify-content:center">
-                  <h2>Experience The Best Service For Your Garage Door Needs.</h2>
-                  <p>Phoenix Garage Master offers a wide range of services to meet your needs, from repairs to installations. We have the knowledge and experience to get the job done quickly and efficiently. We know that a properly working garage door is essential to your home or business, so we offer fast, reliable service. Our technicians are experienced in all types of garage door repair and installation, so you can be sure that we’ll get the job done right.</p>
-              </div>
-              <div>
-                  <img src="https://lh3.googleusercontent.com/geougc/AF1QipOTpt-Vw-ZjCL8zcDKzr4hEKVRef_nh3G5xGRYJ=h400-no" alt="Garage Door Repair Scottsdale, AZ">
-              </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <h2>Experience The Best Service For Your Garage Door Needs.</h2>
+              <p>
+                Phoenix Garage Master offers a wide range of services to meet
+                your needs, from repairs to installations. We have the knowledge
+                and experience to get the job done quickly and efficiently. We
+                know that a properly working garage door is essential to your
+                home or business, so we offer fast, reliable service. Our
+                technicians are experienced in all types of garage door repair
+                and installation, so you can be sure that we’ll get the job done
+                right.
+              </p>
+            </div>
+            <div>
+              <img
+                src="https://lh3.googleusercontent.com/geougc/AF1QipOTpt-Vw-ZjCL8zcDKzr4hEKVRef_nh3G5xGRYJ=h400-no"
+                alt="Garage Door Repair Scottsdale, AZ"
+              />
+            </div>
           </div>
-          <p>Garage door repair is a standard service that our company provides. We have years of experience repairing all types of garage doors, so you can rest assured that who will fix your door correctly. In addition to garage door repair, we also offer other services such as installation and replacement.</p>
-          <p>Phoenix Garage Master is the go-to garage door repair company in Scottsdale. We have the experience and expertise necessary to handle all of your garage door repair needs. We can take care of it all, from repairing a broken spring to fixing a faulty opener. Phoenix Garage Master is the go-to company for all your garage door repair needs. We have a team of highly skilled and experienced professionals who can handle any repair or installation job. We also offer a wide range of services, from repairing broken springs to installing new doors.</p>
+          <p>
+            Garage door repair is a standard service that our company provides.
+            We have years of experience repairing all types of garage doors, so
+            you can rest assured that who will fix your door correctly. In
+            addition to garage door repair, we also offer other services such as
+            installation and replacement.
+          </p>
+          <p>
+            Phoenix Garage Master is the go-to garage door repair company in
+            Scottsdale. We have the experience and expertise necessary to handle
+            all of your garage door repair needs. We can take care of it all,
+            from repairing a broken spring to fixing a faulty opener. Phoenix
+            Garage Master is the go-to company for all your garage door repair
+            needs. We have a team of highly skilled and experienced
+            professionals who can handle any repair or installation job. We also
+            offer a wide range of services, from repairing broken springs to
+            installing new doors.
+          </p>
           <b style="font-size: 30px">Property.</b>
-      </section>
+        </section>
 
-      <section>
+        <section>
           <h2>Look At The Spring Tensioner - Is It Lose Or Worn Out</h2>
-          <p><a href="https://www.phoenixgaragemaster.com/garage-door-maintenance-scottsdale-az/">Garage doors</a> are often seen as a simple, straightforward part of the home. But there is much more to them than meets the eye. Many signs indicate your garage door needs repairs and you should take a look at it now before anything bad happens. If your spring tensioner is lost or worn out this will cause an immediate problem with opening and closing the door because there won’t be enough power to do so properly. Another sign that may indicate your garage door needs repairs is if you notice any dents in the metal panels on either side of the opening- these can cause major problems by getting stuck when they close over time and not stay closed without assistance from someone else.</p>
-      </section>
+          <p>
+            <a
+              href="https://www.phoenixgaragemaster.com/garage-door-maintenance-scottsdale-az/"
+              >Garage doors</a
+            >
+            are often seen as a simple, straightforward part of the home. But
+            there is much more to them than meets the eye. Many signs indicate
+            your garage door needs repairs and you should take a look at it now
+            before anything bad happens. If your spring tensioner is lost or
+            worn out this will cause an immediate problem with opening and
+            closing the door because there won’t be enough power to do so
+            properly. Another sign that may indicate your garage door needs
+            repairs is if you notice any dents in the metal panels on either
+            side of the opening- these can cause major problems by getting stuck
+            when they close over time and not stay closed without assistance
+            from someone else.
+          </p>
+        </section>
 
-      <section>
-          <h2>If There Are Any Cracks In The Sealant Around Your Garage Door, This Can Lead To Water Damage Inside Your Home</h2>
-          <p>The sealant around your garage door is important for protecting the wood on the frame and preventing water from seeping in. When you see cracks, it’s time to call a professional to fix them before they worsen. They can be expensive but will save you money long-term by preserving the life of your garage door.</p>
-          <p>Water damage is never good when trying to maintain a home. It means that there are leaks or problems with your roof which need repairs before they get worse or cause more trouble down the line. A leaky roof typically isn’t going to show any signs until after it starts leaking inside. By then, it’s too late and very difficult to repair without replacing parts of the roofing system or entire sections of siding if it’s a problem with the flashing.</p>
-      </section>
+        <section>
+          <h2>
+            If There Are Any Cracks In The Sealant Around Your Garage Door, This
+            Can Lead To Water Damage Inside Your Home
+          </h2>
+          <p>
+            The sealant around your garage door is important for protecting the
+            wood on the frame and preventing water from seeping in. When you see
+            cracks, it’s time to call a professional to fix them before they
+            worsen. They can be expensive but will save you money long-term by
+            preserving the life of your garage door.
+          </p>
+          <p>
+            Water damage is never good when trying to maintain a home. It means
+            that there are leaks or problems with your roof which need repairs
+            before they get worse or cause more trouble down the line. A leaky
+            roof typically isn’t going to show any signs until after it starts
+            leaking inside. By then, it’s too late and very difficult to repair
+            without replacing parts of the roofing system or entire sections of
+            siding if it’s a problem with the flashing.
+          </p>
+        </section>
 
-      <section>
-          <h2>Check That All Cables Are Tight By Pulling Them With Both Hands While Someone Else Holds The Door Closed From Opening</h2>
-          <p>Garage doors are necessary for safety purposes and convenience, but problems can arise. A garage door may not open when you want it to or could get stuck in the process of opening. If a garage door is damaged, it will require repairs before it can function properly again. Many signs indicate your garage door needs repairs such as cables that won’t pull tight enough, a bent track on the ceiling, an unbalanced door due to misalignment with the floor, an opener that takes too long to close or raise the door after use, and more.</p>
-          <p>If the door is hard to open or close, it might be a sign to call Phoenix Garage Master. We are a professional garage door repair company that can help you with any repair that is needed. Regardless of the size or weight of your garage door, we have the experience and expertise to get the job done. We also carry a wide range of parts for doors of all makes and models, so we can usually make the necessary repairs on-site. If you need garage door repairs in Scottsdale, be sure to call Phoenix Garage Master today!</p>
-          <a class="button-link"
-                href="https://google.com/maps/?cid=8457562680637452045">Find Us Here!</a>
-      </section>
+        <section>
+          <h2>
+            Check That All Cables Are Tight By Pulling Them With Both Hands
+            While Someone Else Holds The Door Closed From Opening
+          </h2>
+          <p>
+            Garage doors are necessary for safety purposes and convenience, but
+            problems can arise. A garage door may not open when you want it to
+            or could get stuck in the process of opening. If a garage door is
+            damaged, it will require repairs before it can function properly
+            again. Many signs indicate your garage door needs repairs such as
+            cables that won’t pull tight enough, a bent track on the ceiling, an
+            unbalanced door due to misalignment with the floor, an opener that
+            takes too long to close or raise the door after use, and more.
+          </p>
+          <p>
+            If the door is hard to open or close, it might be a sign to call
+            Phoenix Garage Master. We are a professional garage door repair
+            company that can help you with any repair that is needed. Regardless
+            of the size or weight of your garage door, we have the experience
+            and expertise to get the job done. We also carry a wide range of
+            parts for doors of all makes and models, so we can usually make the
+            necessary repairs on-site. If you need garage door repairs in
+            Scottsdale, be sure to call Phoenix Garage Master today!
+          </p>
+          <a
+            class="button-link"
+            href="https://google.com/maps/?cid=8457562680637452045"
+            >Find Us Here!</a
+          >
+        </section>
 
-      <section>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3428506.6054852144!2d-113.01633339714832!3d32.94702300249149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x755f4c72acfeef0d!2sPhoenix%20Garage%20Master!5e0!3m2!1sen!2sph!4v1649744449635!5m2!1sen!2sph" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">Garage%20Door%20Repair%20Scottsdale,%20AZ</iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3428506.6054852144!2d-113.01633339714832!3d32.94702300249149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x755f4c72acfeef0d!2sPhoenix%20Garage%20Master!5e0!3m2!1sen!2sph!4v1649744449635!5m2!1sen!2sph"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            >Garage%20Door%20Repair%20Scottsdale,%20AZ</iframe
+          >
+        </section>
 
-      <section>
-        <iframe src="https://www.tripadvisor.com.ph/Attractions-g31350-Activities-Scottsdale_Arizona.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.tripadvisor.com.ph/Attractions-g31350-Activities-Scottsdale_Arizona.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjsjryC8o33AhXUbioKHTWpDr8YABABGgJ0bQ&ae=2&ohost=www.google.com&cid=CAESbeD2Sh-JybXnV6U5lOrb4M-7EJvJrZJ_dcZLSRpHS4indNQ59XTaaL7p0X7IKW39jicqzeIeFHSQihLodb3PbNA0WpPC80dzWRk0OF5Ef2K-yRhdGxD--lZ33P3NSkK6KpLTqf0mX-BcznvWMd4&sig=AOD64_01hnJd1cy4BCoYa8XGTVQtRhx0qw&q&adurl&ved=2ahUKEwiErbKC8o33AhXLCt4KHbZ7ChgQ0Qx6BAgEEAE" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjsjryC8o33AhXUbioKHTWpDr8YABABGgJ0bQ&ae=2&ohost=www.google.com&cid=CAESbeD2Sh-JybXnV6U5lOrb4M-7EJvJrZJ_dcZLSRpHS4indNQ59XTaaL7p0X7IKW39jicqzeIeFHSQihLodb3PbNA0WpPC80dzWRk0OF5Ef2K-yRhdGxD--lZ33P3NSkK6KpLTqf0mX-BcznvWMd4&sig=AOD64_01hnJd1cy4BCoYa8XGTVQtRhx0qw&q&adurl&ved=2ahUKEwiErbKC8o33AhXLCt4KHbZ7ChgQ0Qx6BAgEEAE"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="https://www.phoenixgaragemaster.com/" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="https://www.phoenixgaragemaster.com/"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="./media.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./media.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      <section>
-        <iframe src="./index.html" style="border:0px #ffffff none;" name="" scrolling="yes" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
-      </section>
+        <section>
+          <iframe
+            src="./index.html"
+            style="border: 0px #ffffff none"
+            name=""
+            scrolling="yes"
+            frameborder="1"
+            marginheight="0px"
+            marginwidth="0px"
+            height="400px"
+            width="100%"
+            allowfullscreen
+          ></iframe>
+        </section>
 
-      
+        <section>
+          <a
+            target="_bLank"
+            href="https://rank-fortress-digital-agency.github.io/phoenixgaragemaster-03-22/"
+            >https://rank-fortress-digital-agency.github.io/phoenixgaragemaster-03-22/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="http://phoenixgaragemaster-03-22.s3-website-ap-southeast-1.amazonaws.com/"
+            >http://phoenixgaragemaster-03-22.s3-website-ap-southeast-1.amazonaws.com/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="https://musical-biscochitos-1c8ca3.netlify.app/"
+            >https://musical-biscochitos-1c8ca3.netlify.app/</a
+          ><br />
+          <a
+            target="_bLank"
+            href="https://sites.google.com/view/garage-door-repair-scottsdale/Garage-Door-Repair-Scottsdale"
+            >https://sites.google.com/view/garage-door-repair-scottsdale/Garage-Door-Repair-Scottsdale</a
+          >
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="side-bar">
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li>
+              <a href="https://google.com/maps/?cid=8457562680637452045"
+                >Google Page</a
+              >
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCY-Dkoa8W3fVhFvw7U-xAyA"
+                >Youtube</a
+              >
+            </li>
+            <li><a href="#">Pearltrees</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Google Site</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://www.phoenixgaragemaster.com/">Main</a></li>
+            <li><a href="https://goo.gl/maps/4HKYeZ3BjyfXUz3Z9">Maps</a></li>
+            <li><a href="./media.html">Media</a></li>
+          </ul>
+        </section>
+      </div>
     </div>
-
-    <!-- Sidebar -->
-    <div class="side-bar">
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="https://google.com/maps/?cid=8457562680637452045">Google Page</a></li>
-          <li><a href="https://www.youtube.com/channel/UCY-Dkoa8W3fVhFvw7U-xAyA">Youtube</a></li>
-          <li><a href="#">Pearltrees</a></li>
-          <li><a href="#">Calendar</a></li>
-          <li><a href="#">Google Site</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Useful Links</h2>
-        <ul>
-          <li><a href="https://www.phoenixgaragemaster.com/">Main</a></li>
-          <li><a href="https://goo.gl/maps/4HKYeZ3BjyfXUz3Z9">Maps</a></li>
-          <li><a href="./media.html">Media</a></li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
